@@ -3,5 +3,8 @@ class List < ApplicationRecord
 
   validates :title,presence: true
   validates :body,presence: true
-  validates :image,presence: true
+  
+  #rails cで画像を扱う場合は複雑になるためコメントアウトして、
+  #タイトルと本文のみで投稿できるように変更する
+ validates :image,presence: true
 end
