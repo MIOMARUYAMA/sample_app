@@ -3,14 +3,18 @@ class ListsController < ApplicationController
     @list=List.new
   end
   # 投稿を保存するためのcreatアクションの作成
-  def creat
+  def create
     # フォームに記述された文字やデータを受け取る（データを受け取り新規登録するためのインスタンス作成）
-    list=List.new(list_params)
+    @list=List.new(list_params)
     # データをDBに保存するためのsaveメソッド実行
-    list.save
+    if @list.save
     # トップ画面へリダイレクト
-    redirect_to list_path(list.id)
+    redirect_to list_path(@list.id)
+  else
+   
+    render :new
   end
+end
 
   def index
     @lists=List.all
